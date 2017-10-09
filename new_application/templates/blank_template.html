@@ -1,0 +1,34 @@
+<html>
+<body>
+
+<form action="http://localhost:5000/result" method="GET">
+  Artist to search for:<br>
+  <input type="text" name="number" value="">
+  <br><br>
+  <input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>
+
+@app.route('/name')
+def cubeView():
+    html_form = '''
+    <html>
+    <body>
+    <form method="GET" action="http://localhost:5000/result-name">
+        <label>Enter your name:
+            <input type="text" name="fullname" value=" ">
+        </label></br>
+        <input type="submit" value="Submit">
+    </form>
+    </body>
+    </html>
+    '''
+    return html_form
+
+@app.route('/result-name', methods = ['GET', 'POST'])
+def result_cube():
+    result = request.args
+    fullname = result.get('fullname')
+    return "your name is " + str(len(fullname)) +" letters long"
