@@ -37,11 +37,11 @@ def itunes_data():
 	return render_template('artist_info.html', objects=data['results'])
 
 @app.route('/artistlinks')
-def b():
+def al():
 	return render_template('artist_links.html')
 
 @app.route('/specific/song/<artist_name>', methods= ['GET', 'POST'])
-def d(artist_name):
+def ss(artist_name):
 	d = {'term' : artist_name, 'media' : 'music', 'format':'json'}
 	resp = requests.get("https://itunes.apple.com/search?", params=d)
 	d_info = json.loads(resp.text)
